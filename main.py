@@ -43,7 +43,7 @@ def main():
     
     
     if args.mode == "detect":
-        preprocessor.get_vector_data(ok_files)
+        preprocessor.load_images(ok_files)
 
 
 if __name__ == "__main__":
