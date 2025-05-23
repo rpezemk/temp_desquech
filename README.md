@@ -9,3 +9,11 @@ Project aiming building 3D objects from 2D architectural plans/views.
 pip install -r requirements.txt
 python main.py
 ```
+## Running
+```
+```
+
+### running elementary things
+```bash
+python .\main.py --test-elementary
+```
