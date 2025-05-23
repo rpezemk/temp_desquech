@@ -8,7 +8,7 @@ from shapely.geometry import LineString
 import src.line_operations as line_operations
 
 def load_images(paths: list[Path]) -> list:
-    res = list(map(read_image, paths))
+    res = list(map(lambda p: (p, read_image(p)), paths))
     return res
 
 
