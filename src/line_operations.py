@@ -1,10 +1,6 @@
 from pathlib import Path
-import cv2
-import numpy as np
-import logging
 import math
 from shapely.geometry import LineString
-
 
 
 def merge_lines(lines: list[LineString]):

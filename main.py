@@ -1,12 +1,11 @@
 import argparse
-import cv2 as cv
-import src.io_operations as io_operations
-import logging
 import sys
-import src.preprocessor as preprocessor
 from pathlib import Path
 
-logging.basicConfig(level=logging.DEBUG)
+import src.io_operations as io_operations
+import src.preprocessor as preprocessor
+import src.log as log
+
 
 def main():
     parser = argparse.ArgumentParser(description="DeSquech project main script.")
@@ -18,9 +17,8 @@ def main():
 
     args = parser.parse_args()
 
-    for arg, value in vars(args).items():
-        print(f"{arg}: {value}")
-        
+    log.nice("cmd-line arguments:", ['arg', 'value'], vars(args))
+
     ok_files, err_files = [], []
 
     if args.test_elementary:
@@ -34,19 +32,20 @@ def main():
         
     # error exits:    
     if err_files and not args.ignore_file_errors:
-        logging.error("following images could not be read:\n" + "\n".join(err_files))
+        log.err("following images could not be read:\n" + "\n".join(err_files))
         sys.exit(1)
 
     if args.mode == "detect" and not (args.input_dir or args.files or ok_files):
-        logging.error("no input files or dir provided for 'detect' mode")
+        log.err("no input files or dir provided for 'detect' mode")
         sys.exit(1)
     
     # main logic
     if args.mode == "detect":
         preprocessor.load_images(ok_files)
     else:
-        logging.error(f"mode '{args.mode}' yet not implemented")
+        log.err(f"mode '{args.mode}' yet not implemented")
         sys.exit(1)
 
 if __name__ == "__main__":
     main()
+
