@@ -1,22 +1,14 @@
 from tabulate import tabulate
 from pathlib import Path
 
-def print_green(msg):
-    print(f"\033[32m{msg}\033[0m")
-
-def print_red(msg):
+def err(msg):
     print(f"\033[31m{msg}\033[0m")
 
-
-
-def err(msg):
-    print_red(msg)
-
 def nice(*args):
-    __nice(print_green, *args)
+    __nice(lambda msg: print(f"\033[32m{msg}\033[0m"), *args)
 
 def nice_err(*args):
-    __nice(print_red, *args)
+    __nice(lambda msg: print(f"\033[31m{msg}\033[0m"), *args)
 
 def __nice(method, *args):
     arg_len = len(args)
