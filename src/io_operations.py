@@ -23,6 +23,8 @@ def check_file_paths(file_paths: list[Path|str]) -> tuple[list[Path], list[str]]
     for path in file_paths:
         if isinstance(path, str):
             path = Path(path) 
+        if not path.is_absolute():    
+            path = path = Path.cwd() / path
         if not path.exists() or path.is_dir() or path.suffix.lower() not in valid_extensions:
             err_paths.append(path)
         else:

@@ -1,6 +1,6 @@
 import argparse
 import cv2 as cv
-import src.io_helper as io_helper
+import src.io_operations as io_operations
 import logging
 import sys
 import src.preprocessor as preprocessor
@@ -24,12 +24,12 @@ def main():
     ok_files, err_files = [], []
 
     if args.test_elementary:
-        ok_files = io_helper.get_graphical_files(Path(Path.cwd()) / "data" / "elementary")
+        ok_files = io_operations.get_graphical_files(Path(Path.cwd()) / "data" / "elementary")
 
     if args.input_dir:
-        ok_files, err_files = io_helper.get_graphical_files(args.input_dir), []
+        ok_files, err_files = io_operations.get_graphical_files(args.input_dir), []
     elif args.files:
-        ok_files, err_files = io_helper.check_file_paths(args.files)
+        ok_files, err_files = io_operations.check_file_paths(args.files)
         ...
         
     # error exits:    
