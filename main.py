@@ -41,10 +41,12 @@ def main():
         logging.error("no input files or dir provided for 'detect' mode")
         sys.exit(1)
     
-    
+    # main logic
     if args.mode == "detect":
         preprocessor.load_images(ok_files)
-
+    else:
+        logging.error(f"mode '{args.mode}' yet not implemented")
+        sys.exit(1)
 
 if __name__ == "__main__":
     main()
