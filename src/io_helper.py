@@ -1,7 +1,5 @@
 from pathlib import Path
-from typing import Union, List, Tuple
 
-import os
 valid_extensions = {'.jpg', '.jpeg', '.png', '.bmp', '.gif', '.tiff', '.webp'}
 
 def get_graphical_files(dir_path: Path|str) -> list[Path]:
@@ -16,7 +14,7 @@ def get_graphical_files(dir_path: Path|str) -> list[Path]:
             
     return res
 
-def check_file_paths(file_paths: list[Path|str]) -> Tuple[list[Path], list[str]]:
+def check_file_paths(file_paths: list[Path|str]) -> tuple[list[Path], list[str]]:
     '''
 
     '''
@@ -25,7 +23,7 @@ def check_file_paths(file_paths: list[Path|str]) -> Tuple[list[Path], list[str]]
     for path in file_paths:
         if isinstance(path, str):
             path = Path(path) 
-        if not os.path.exists(path) or os.path.isdir(path) or path.suffix.lower() not in valid_extensions:
+        if not path.exists() or path.is_dir() or path.suffix.lower() not in valid_extensions:
             err_paths.append(path)
         else:
             ok_paths.append(path)

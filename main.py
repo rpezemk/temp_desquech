@@ -4,7 +4,6 @@ import src.io_helper as io_helper
 import logging
 import sys
 import src.preprocessor as preprocessor
-import os
 from pathlib import Path
 
 logging.basicConfig(level=logging.DEBUG)
@@ -21,12 +20,11 @@ def main():
 
     for arg, value in vars(args).items():
         print(f"{arg}: {value}")
-
         
     ok_files, err_files = [], []
 
     if args.test_elementary:
-        ok_files = io_helper.get_graphical_files(Path(os.getcwd()) / "data" / "elementary")
+        ok_files = io_helper.get_graphical_files(Path(Path.cwd()) / "data" / "elementary")
 
     if args.input_dir:
         ok_files, err_files = io_helper.get_graphical_files(args.input_dir), []
