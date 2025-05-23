@@ -3,7 +3,5 @@ __pycache__/
 *.pyo
 *.pyd
 .env
-*.jpg
-*.png
 models/
 .ipynb_checkpoints/
