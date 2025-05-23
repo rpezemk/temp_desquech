@@ -15,3 +15,4 @@ def get_vector_data(paths: list[Path]) -> list:
 def vectorize(path: Path):
     img = cv2.imread(str(path))  # BGR image
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    return gray
