@@ -70,7 +70,7 @@ def d_y(line: LineString):
 def direction(line: LineString):
         x0, y0 = line.coords[0]
         x1, y1 = line.coords[1]
-        theta = math.atan2(-(x1 - x0), y1 - y0)  # angle of the normal vector
+        theta = math.atan2(-(x1 - x0), y1 - y0)
         return theta
 
 def ends_near(line0: LineString, line1: LineString, delta=3) -> bool:
